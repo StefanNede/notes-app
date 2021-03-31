@@ -1,1 +1,5 @@
-// this will store the colours for both dark and light mode
+const bgColor1:string = "#507DC6"; // blue
+const bgColor2:string = "#7483C3"; // purple
+const lightTextColor:string = "#E6E6E6"; // a lighter light gray
+
+export {bgColor1, bgColor2, lightTextColor};

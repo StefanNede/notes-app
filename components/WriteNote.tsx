@@ -1,0 +1,1 @@
+// the display to write the note
