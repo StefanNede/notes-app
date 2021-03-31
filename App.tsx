@@ -8,8 +8,8 @@ import Register from "./pages/Register";
 export default function App() {
   return (
     <View style={styles.main}>
-      <Nav />
-      {/* <Register /> */}
+      {/* <Nav /> */}
+      <Register />
     </View>
   )
 }

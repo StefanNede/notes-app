@@ -6,7 +6,7 @@ import Notes from "../pages/Notes";
 import Profile from "../pages/Profile";
 
 
-export default function MainContent({page}:string|any){
+export default function MainContent({page}: string|any){
     function setPage(){
         switch (page){
             case "Home":

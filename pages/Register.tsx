@@ -5,6 +5,7 @@ import {View, Text, TextInput, StyleSheet, TouchableOpacity, Image, FlatList, Pl
 import {windowHeight, windowWidth} from '../globals/ScreenSize';
 import Signup from "../components/Signup";
 import Login from "../components/Login";
+import {regularFontSize, titleFontSize, smallFontSize} from "../globals/FontSize";
 
 export default function Register(){
     const [currentPage, setCurrentPage] = useState("sign up");
@@ -20,18 +21,20 @@ export default function Register(){
                     <Image source={require("../assets/images/icon.png")} style = {styles.logo}>
                     </Image>
                 </View>
-                <KeyboardAvoidingView style = {styles.changeDisplay} behavior={Platform.OS === "ios" ? "padding" : "height"}>
-                    <TouchableOpacity onPress={() => changePage("sign up")} style={[styles.changeDisplayButton, currentPage=="sign up" ? styles.onPage : styles.notOnPage]}>
-                        <Text>sign up</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => changePage("log in")} style={[styles.changeDisplayButton, currentPage=="log in" ? styles.onPage : styles.notOnPage]}>
-                        <Text>log in</Text>
-                    </TouchableOpacity>
-                </KeyboardAvoidingView>
-                <KeyboardAvoidingView style={styles.mainRegisterArea} behavior={Platform.OS === "ios" ? "padding" : "height"}>
-                    {/* rest of the page with text inputs */}
-                    {currentPage === "sign up" ? <Signup /> : <Login />}
-                    <Text style={styles.ContinueText}>Continue not logged in</Text>
+                <KeyboardAvoidingView style={styles.mainInfo} behavior={Platform.OS === "ios" ? "padding" : "height"}>
+                    <View style = {styles.changeDisplay}>
+                        <TouchableOpacity onPress={() => changePage("sign up")} style={[styles.changeDisplayButton, currentPage=="sign up" ? styles.onPage : styles.notOnPage]}>
+                            <Text style={styles.buttonText}>sign up</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() => changePage("log in")} style={[styles.changeDisplayButton, currentPage=="log in" ? styles.onPage : styles.notOnPage]}>
+                            <Text style={styles.buttonText}>log in</Text>
+                        </TouchableOpacity>
+                    </View>
+                    <View style={styles.mainRegisterArea}>
+                        {/* rest of the page with text inputs */}
+                        {currentPage === "sign up" ? <Signup /> : <Login />}
+                        <TouchableOpacity><Text style={styles.ContinueText}>Continue not logged in</Text></TouchableOpacity>
+                    </View>
                 </KeyboardAvoidingView>
             </View>
         </View>
@@ -40,6 +43,13 @@ export default function Register(){
 }
 
 const styles = StyleSheet.create({
+    mainInfo:{
+        height: windowHeight - windowHeight*0.4,
+        width: windowWidth,
+        flex: 1,
+        position: 'absolute',
+        top: windowHeight * 0.4,
+    },
     onPage: {
         backgroundColor: '#FFFFFF50',
     },
@@ -59,23 +69,24 @@ const styles = StyleSheet.create({
         width: windowWidth,
         height: windowHeight+10,
     },
-    ContinueText: {},
+    ContinueText: {
+        textDecorationLine: 'underline',
+    },
     mainRegisterArea: {
-        position: 'absolute',
+        position: 'relative',
         backgroundColor: '#FFFFFF50',
         width: windowWidth,
-        height: windowHeight/1.9,
-        top:windowHeight -  windowHeight/1.9 - 98,
+        height: windowHeight/2,
         alignItems: 'center',
         justifyContent: 'center',
         ...Platform.select({
             ios: {
-                top:windowHeight -  windowHeight/1.9 -windowHeight/16.8,
+                height: windowHeight/1.8
             },
             android: {
-                top:windowHeight -  windowHeight/1.9 - windowHeight/7.8,
+                height: windowHeight/2
             },
-          }),
+        }),
     },
     changeDisplayButton: {
         height: '100%',
@@ -88,20 +99,22 @@ const styles = StyleSheet.create({
     },
     mainView: {
         width: windowWidth,
+        height: windowHeight,
         flex: 1,
-        alignItems: 'center',
-        marginTop: 50,
+        justifyContent: 'space-between',
     },
     logo: {
         width: windowWidth/2.6,
         height: windowWidth/2.6,
-        borderRadius: windowWidth/5.2,
+        borderRadius: 100,
         backgroundColor: '#fff',
         position: 'absolute',
         borderColor: 'black',
         borderWidth: 1,
     },
     logoContainer: { 
+        alignSelf: 'center',
+        position: "absolute",
         backgroundColor: 'gray',
         width: windowWidth/2.6,
         height: windowWidth/2.6,
@@ -109,29 +122,16 @@ const styles = StyleSheet.create({
         shadowColor: "black",
         shadowOffset: { height: 0, width:0},
         shadowOpacity: 0.5,
-        top: windowHeight/19,
-        ...Platform.select({
-            ios: {
-                top: windowHeight/12
-            },
-            android: {
-            },
-          }),
+        top: windowHeight/8,
     },
     changeDisplay: {
+        position: 'relative',
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-around',
-        backgroundColor: 'transparent',
         width: windowWidth,
-        top: windowHeight/1.75 - windowHeight/2.25, 
-        ...Platform.select({
-            ios: {
-                top: windowHeight/1.56 - windowHeight/2.25 - 3.4,
-            },
-            android: {
-                top: windowHeight/1.80 - windowHeight/2.25 + 0.6,
-            },
-          }),
-    }
+    },
+    buttonText: {
+        fontSize: titleFontSize -5,
+    },
 });

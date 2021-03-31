@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
-import {View, TouchableOpacity, Text, TextInput, StyleSheet, KeyboardAvoidingView, Platform} from "react-native";
+import {View, TouchableOpacity, Text, TextInput, StyleSheet, KeyboardAvoidingView} from "react-native";
 
-export default function Signup(){
+export default function Login(){
     return (
-        <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"}>
-            <TextInput>Username/email</TextInput>
+        <KeyboardAvoidingView>
+            <TextInput>Username</TextInput>
+            <TextInput>Email</TextInput>
             <TextInput>Password</TextInput>
         </KeyboardAvoidingView>
     )
