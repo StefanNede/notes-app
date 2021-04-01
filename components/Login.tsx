@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {View, TouchableOpacity, Text, TextInput, StyleSheet, KeyboardAvoidingView, Platform, ScrollView, Alert} from "react-native";
 import { windowWidth } from '../globals/ScreenSize';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function Signup({loginInfo, setLoginInfo, loggedIn, setLoggedIn}: any){
     const [enteredUsername, setUsername] = useState("");
@@ -9,9 +10,20 @@ export default function Signup({loginInfo, setLoginInfo, loggedIn, setLoggedIn}:
         username: "stefan",
         password: "notes"
     };
+    // stores the fact that the user has logged in on this app, so that the user doesn't need to log in each time they open the app
+    // we will disable this whilst testing, as it interferes with the virtual device
+    // const storeData = async () => {
+    //     try {
+    //       await AsyncStorage.setItem('has_logged_in', true);
+    //     } catch (e) {
+    //         console.log("error whilst trying to save that the user has logged in");
+    //     }
+    //     console.log('done');
+    //   }
     function enterLoginInfo(){
         if (enteredUsername === correctInfo.username.toLowerCase() && enteredPassword === correctInfo.password){
             setLoggedIn(true);
+            // storeData();
         }
         else {
             Alert.alert(
