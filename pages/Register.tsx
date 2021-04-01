@@ -7,8 +7,26 @@ import Signup from "../components/Signup";
 import Login from "../components/Login";
 import {regularFontSize, titleFontSize, smallFontSize} from "../globals/FontSize";
 
+interface Login {
+    username: string,
+    password: string
+}
+interface Signup {
+    username: string,
+    email: string,
+    password: string
+}
+
+
 export default function Register(){
     const [currentPage, setCurrentPage] = useState("sign up");
+    const [signupInfo, setSignupInfo] = useState({    
+        username: "",
+        email: "",
+        password: ""});
+    const [loginInfo, setLoginInfo] = useState({
+        username: "", 
+        password: ""}); 
     function changePage(newPage:string){
         setCurrentPage(newPage);
     }
@@ -21,7 +39,7 @@ export default function Register(){
                     <Image source={require("../assets/images/icon.png")} style = {styles.logo}>
                     </Image>
                 </View>
-                <KeyboardAvoidingView style={styles.mainInfo} behavior={Platform.OS === "ios" ? "padding" : "height"}>
+                <View style={styles.mainInfo}>
                     <View style = {styles.changeDisplay}>
                         <TouchableOpacity onPress={() => changePage("sign up")} style={[styles.changeDisplayButton, currentPage=="sign up" ? styles.onPage : styles.notOnPage]}>
                             <Text style={styles.buttonText}>sign up</Text>
@@ -30,12 +48,12 @@ export default function Register(){
                             <Text style={styles.buttonText}>log in</Text>
                         </TouchableOpacity>
                     </View>
-                    <View style={styles.mainRegisterArea}>
+                    <KeyboardAvoidingView style={styles.mainRegisterArea} behavior={Platform.OS === "ios" ? "padding" : "height"}>
                         {/* rest of the page with text inputs */}
-                        {currentPage === "sign up" ? <Signup /> : <Login />}
+                        {currentPage === "sign up" ? <Signup /> : <Login loginInfo = {loginInfo} setLoginInfo = {setLoginInfo}/>}
                         <TouchableOpacity><Text style={styles.ContinueText}>Continue not logged in</Text></TouchableOpacity>
-                    </View>
-                </KeyboardAvoidingView>
+                    </KeyboardAvoidingView>
+                </View>
             </View>
         </View>
     </View>
