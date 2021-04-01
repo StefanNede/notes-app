@@ -1,19 +1,27 @@
 import React, {useState, useEffect} from 'react';
-import {View, TouchableOpacity, Text, TextInput, StyleSheet, KeyboardAvoidingView, Platform, ScrollView} from "react-native";
+import {View, TouchableOpacity, Text, TextInput, StyleSheet, KeyboardAvoidingView, Platform, ScrollView, Alert} from "react-native";
 import { windowWidth } from '../globals/ScreenSize';
 
-export default function Signup({loginInfo, setLoginInfo}: any){
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
+export default function Signup({loginInfo, setLoginInfo, loggedIn, setLoggedIn}: any){
+    const [enteredUsername, setUsername] = useState("");
+    const [enteredPassword, setPassword] = useState("");
+    const correctInfo = {
+        username: "stefan",
+        password: "notes"
+    };
     function enterLoginInfo(){
-        setUsername("");
-        setPassword("");
-        setLoginInfo(
-            {
-                username: username,
-                password: password
-            }
-        )
+        if (enteredUsername === correctInfo.username.toLowerCase() && enteredPassword === correctInfo.password){
+            setLoggedIn(true);
+        }
+        else {
+            Alert.alert(
+                "Invalid",
+                "Username or password are incorrect",
+                [
+                    { text: "OK" }
+                  ]
+            );
+        }
     }
     return (
         <View>
@@ -21,16 +29,19 @@ export default function Signup({loginInfo, setLoginInfo}: any){
                 <TextInput  
                 style={styles.input}      
                 onChangeText={setUsername}
-                value={username}
+                value={enteredUsername}
                 placeholder="username / email" 
-                placeholderTextColor = "gray" />
+                placeholderTextColor = "gray"
+                autoCapitalize = 'none' />
                 <TextInput        
                 style={styles.input}    
                 onChangeText={setPassword}
-                value={password}
+                value={enteredPassword}
                 placeholder="password" 
-                placeholderTextColor = "gray" />
-                <TouchableOpacity onPress={() => enterLoginInfo()} style={styles.button}>
+                placeholderTextColor = "gray"
+                autoCapitalize = 'none'
+                secureTextEntry  />
+                <TouchableOpacity onPress={enterLoginInfo} style={styles.button}>
                     <Text>Enter</Text>
                 </TouchableOpacity>
             </KeyboardAvoidingView>

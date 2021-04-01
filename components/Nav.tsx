@@ -6,15 +6,21 @@ import Title from "./Title";
 import {bgColor1, bgColor2, lightTextColor} from "../globals/Colours";
 import MainContent from "./MainContent";
 
-export default function Nav(){
+export default function Nav({loggedIn, setLoggedIn}){
     const [activePage, setActivePage] = useState("Home");
     function changePage(pageClicked:string){
         setActivePage(pageClicked);
     };
+    function goOut(){
+        setLoggedIn(false);
+    }
     return (
         <View>
             <View>
                 <Title title={activePage.toLowerCase()} />
+                <TouchableOpacity onPress={goOut}>
+                    <Text>Log out</Text>
+                </TouchableOpacity>
             </View>
             <View style={styles.mainContent}>
                 <MainContent page={activePage}/>

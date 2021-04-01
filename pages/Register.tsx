@@ -17,16 +17,10 @@ interface Signup {
     password: string
 }
 
-
-export default function Register(){
+export default function Register({loggedIn, setLoggedIn}){
     const [currentPage, setCurrentPage] = useState("sign up");
-    const [signupInfo, setSignupInfo] = useState({    
-        username: "",
-        email: "",
-        password: ""});
-    const [loginInfo, setLoginInfo] = useState({
-        username: "", 
-        password: ""}); 
+    const [signupInfo, setSignupInfo] = useState({});
+    const [loginInfo, setLoginInfo] = useState({}); 
     function changePage(newPage:string){
         setCurrentPage(newPage);
     }
@@ -49,8 +43,7 @@ export default function Register(){
                         </TouchableOpacity>
                     </View>
                     <KeyboardAvoidingView style={styles.mainRegisterArea} behavior={Platform.OS === "ios" ? "padding" : "height"}>
-                        {/* rest of the page with text inputs */}
-                        {currentPage === "sign up" ? <Signup /> : <Login loginInfo = {loginInfo} setLoginInfo = {setLoginInfo}/>}
+                        {currentPage === "sign up" ? <Signup /> : <Login loginInfo = {loginInfo} setLoginInfo = {setLoginInfo} loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>}
                         <TouchableOpacity><Text style={styles.ContinueText}>Continue not logged in</Text></TouchableOpacity>
                     </KeyboardAvoidingView>
                 </View>
