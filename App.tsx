@@ -8,6 +8,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function App() {
   const [loggedIn, setLoggedIn] = useState("");
+  const [profile, setProfile] = useState("");
   // this needs to be a local store, so that the user doesn't have to log in each time they open the app
   // we will disable this whilst testing, as it interferes with the virtual device
   // const getData = async () => {
@@ -23,7 +24,7 @@ export default function App() {
   // getData();
   return (
     <View style={styles.main}>
-      {loggedIn === true ? <Nav loggedIn={loggedIn} setLoggedIn={setLoggedIn}/> : <Register loggedIn={loggedIn} setLoggedIn={setLoggedIn}/> }
+      {loggedIn === true ? <Nav loggedIn={loggedIn} setLoggedIn={setLoggedIn} profile={profile}/> : <Register loggedIn={loggedIn} setLoggedIn={setLoggedIn} profile={profile} setProfile={setProfile}/> }
     </View>
   )
 }

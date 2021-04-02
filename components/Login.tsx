@@ -3,7 +3,7 @@ import {View, TouchableOpacity, Text, TextInput, StyleSheet, KeyboardAvoidingVie
 import { windowWidth } from '../globals/ScreenSize';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export default function Signup({loginInfo, setLoginInfo, loggedIn, setLoggedIn}: any){
+export default function Signup({loginInfo, setLoginInfo, loggedIn, setLoggedIn, setProfile}: any){
     const [enteredUsername, setUsername] = useState("");
     const [enteredPassword, setPassword] = useState("");
     const correctInfo = {
@@ -23,6 +23,7 @@ export default function Signup({loginInfo, setLoginInfo, loggedIn, setLoggedIn}:
     function enterLoginInfo(){
         if (enteredUsername === correctInfo.username.toLowerCase() && enteredPassword === correctInfo.password){
             setLoggedIn(true);
+            setProfile(enteredUsername);
             // storeData();
         }
         else {

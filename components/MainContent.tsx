@@ -6,7 +6,7 @@ import Notes from "../pages/Notes";
 import Profile from "../pages/Profile";
 
 
-export default function MainContent({page}: string|any){
+export default function MainContent({page, profile, setLoggedIn}: string|any){
     function setPage(){
         switch (page){
             case "Home":
@@ -14,7 +14,7 @@ export default function MainContent({page}: string|any){
             case "Notes":
                 return <Notes />
             case "Profile":
-                return <Profile />
+                return <Profile profile={profile} setLoggedIn={setLoggedIn}/>
         }
     }
     return (
@@ -26,6 +26,7 @@ export default function MainContent({page}: string|any){
 
 const styles = StyleSheet.create({
     content: {
+        position: 'relative',
         backgroundColor: 'lightgray',
         height: '100%',
         flex: 1,

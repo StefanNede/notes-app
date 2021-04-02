@@ -6,7 +6,7 @@ import Title from "./Title";
 import {bgColor1, bgColor2, lightTextColor} from "../globals/Colours";
 import MainContent from "./MainContent";
 
-export default function Nav({loggedIn, setLoggedIn}){
+export default function Nav({loggedIn, setLoggedIn, profile}: any){
     const [activePage, setActivePage] = useState("Home");
     function changePage(pageClicked:string){
         setActivePage(pageClicked);
@@ -15,15 +15,12 @@ export default function Nav({loggedIn, setLoggedIn}){
         setLoggedIn(false);
     }
     return (
-        <View>
+        <View style={styles.container}>
             <View>
                 <Title title={activePage.toLowerCase()} />
-                <TouchableOpacity onPress={goOut}>
-                    <Text>Log out</Text>
-                </TouchableOpacity>
             </View>
             <View style={styles.mainContent}>
-                <MainContent page={activePage}/>
+                <MainContent page={activePage} profile={profile} setLoggedIn={setLoggedIn}/>
             </View>
             <View style={styles.navbar}>
                 <TouchableOpacity onPress={()=> changePage("Profile")}>
@@ -43,34 +40,35 @@ export default function Nav({loggedIn, setLoggedIn}){
 }
 
 const styles = StyleSheet.create({
+    container: {
+    },
     navbar: {
-        backgroundColor: bgColor1,
-        position: 'absolute',
-        top: windowHeight - windowHeight/10,
-        height: windowHeight/7,
         borderTopWidth: 1,
-        borderColor: 'lightgray',
+        borderColor: lightTextColor,     
+        backgroundColor: bgColor1,
         width: windowWidth,
-        flex: 1,
-        paddingTop: 20,
+        height: windowHeight*0.09,
         justifyContent: 'space-around',
+        alignItems: 'center',
         flexDirection: 'row',
         ...Platform.select({
             ios: {
-                height: windowHeight - windowHeight/1.13,
-                top: windowHeight - windowHeight/10,
+                paddingBottom: 30,
             },
-            android: {
-                height: windowHeight - windowHeight/1.21,
-                top: windowHeight - windowHeight/7,
-            },
-          }),
+        }),
     },
     mainContent: {
-        height: windowHeight/1.2,
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
+        ...Platform.select({
+            ios: {
+                height: windowHeight*0.82,
+            },
+            android: {
+                height: windowHeight*0.75,
+            },
+        }),
     },
     text: {
         color: lightTextColor,

@@ -17,12 +17,16 @@ interface Signup {
     password: string
 }
 
-export default function Register({loggedIn, setLoggedIn}){
+export default function Register({loggedIn, setLoggedIn, profile, setProfile}:any){
     const [currentPage, setCurrentPage] = useState("sign up");
     const [signupInfo, setSignupInfo] = useState({});
     const [loginInfo, setLoginInfo] = useState({}); 
     function changePage(newPage:string){
         setCurrentPage(newPage);
+    }
+    function continueWithoutAccount(){
+        setProfile("guest");
+        setLoggedIn(true);
     }
     return(
     <View style={styles.container}>
@@ -43,8 +47,10 @@ export default function Register({loggedIn, setLoggedIn}){
                         </TouchableOpacity>
                     </View>
                     <KeyboardAvoidingView style={styles.mainRegisterArea} behavior={Platform.OS === "ios" ? "padding" : "height"}>
-                        {currentPage === "sign up" ? <Signup /> : <Login loginInfo = {loginInfo} setLoginInfo = {setLoginInfo} loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>}
-                        <TouchableOpacity><Text style={styles.ContinueText}>Continue not logged in</Text></TouchableOpacity>
+                        {currentPage === "sign up" ? <Signup signupInfo={signupInfo} setSignupInfo={setSignupInfo} loggedIn={loggedIn} setLoggedIn={setLoggedIn} setProfile={setProfile}/> : <Login loginInfo = {loginInfo} setLoginInfo = {setLoginInfo} loggedIn={loggedIn} setLoggedIn={setLoggedIn} setProfile={setProfile}/>}
+                        <TouchableOpacity onPress={continueWithoutAccount}>
+                            <Text style={styles.ContinueText}>Continue not logged in</Text>
+                        </TouchableOpacity>
                     </KeyboardAvoidingView>
                 </View>
             </View>
@@ -133,6 +139,7 @@ const styles = StyleSheet.create({
         shadowColor: "black",
         shadowOffset: { height: 0, width:0},
         shadowOpacity: 0.5,
+        elevation: 5,
         top: windowHeight/8,
     },
     changeDisplay: {

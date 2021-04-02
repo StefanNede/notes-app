@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import {Text, View, StyleSheet, Platform} from 'react-native';
 import {windowHeight, windowWidth} from '../globals/ScreenSize';
 import {titleFontSize} from "../globals/FontSize";
 import {bgColor1, lightTextColor} from "../globals/Colours";
@@ -14,18 +14,26 @@ export default function Title({title}:any) {
 
 const styles = StyleSheet.create({
     titleContainer: {
-        position: 'relative',
-        paddingTop: windowHeight/13,
-        width: '100%',
-        borderBottomWidth: 1,
-        borderColor: 'lightgray',
-        flex: 1,
+        width: windowWidth,
+        height: windowHeight*0.1,
         alignItems: 'center',
+        justifyContent: 'center',
         backgroundColor: bgColor1,
+        borderBottomWidth: 1,
+        borderColor: lightTextColor,
+        ...Platform.select({
+            ios: {
+                paddingTop: 20,
+                paddingBottom: 10,
+            },
+            android:{
+                paddingTop: 5,
+            }
+        }),
     },
     titletext: {
+        top: 10,
         position: 'relative',
-        bottom: 10,
         fontSize: titleFontSize,
         color: lightTextColor,
     },
