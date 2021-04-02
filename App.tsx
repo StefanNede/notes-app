@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import {Text, View, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
 import Title from "./components/Title";
 import {windowHeight, windowWidth} from './globals/ScreenSize';
 import Nav from "./components/Nav";

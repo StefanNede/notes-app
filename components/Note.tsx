@@ -3,15 +3,20 @@ import {View, StyleSheet, Text, TouchableOpacity} from 'react-native';
 import {windowWidth} from "../globals/ScreenSize";
 import {regularFontSize, titleFontSize, smallFontSize} from "../globals/FontSize";
 import {bgColor1, bgColor2, lightTextColor, notesBackgroundColor} from "../globals/Colours";
+import ViewNote from "./ViewNote";
 
 export default function Note({note}: any){
+    const [noteOpen, setNoteOpen] = useState(false);
+    function openNote(){
+        setNoteOpen(true);
+    };
     return (
         <View>
-            <TouchableOpacity style={styles.NoteContainer}>
+            {noteOpen ? <ViewNote note={note} setNoteOpen={setNoteOpen}/> : <TouchableOpacity style={styles.NoteContainer} onPress={openNote}>
                 <Text style={styles.noteTitle}>{note.title}</Text>
                 <Text style={styles.noteDescription}>{note.description}</Text>
                 <Text style={styles.noteDate}>{note.dateWritten}</Text>
-            </TouchableOpacity>
+            </TouchableOpacity>}
         </View>
     )
 };
