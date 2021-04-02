@@ -38,26 +38,30 @@ export default function Signup({loginInfo, setLoginInfo, loggedIn, setLoggedIn, 
     }
     return (
         <View>
-            <KeyboardAvoidingView style={styles.loginScreen} behavior={Platform.OS === "ios" ? "padding" : "height"}>
-                <TextInput  
-                style={styles.input}      
-                onChangeText={setUsername}
-                value={enteredUsername}
-                placeholder="username / email" 
-                placeholderTextColor = "gray"
-                autoCapitalize = 'none' />
-                <TextInput        
-                style={styles.input}    
-                onChangeText={setPassword}
-                value={enteredPassword}
-                placeholder="password" 
-                placeholderTextColor = "gray"
-                autoCapitalize = 'none'
-                secureTextEntry  />
+            <View style={styles.loginScreen}>
+                <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"}>
+                    <TextInput  
+                    style={styles.input}      
+                    onChangeText={setUsername}
+                    value={enteredUsername}
+                    placeholder="username / email" 
+                    placeholderTextColor = "gray"
+                    autoCapitalize = 'none' />
+                </KeyboardAvoidingView>
+                <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"}>
+                    <TextInput        
+                    style={styles.input}    
+                    onChangeText={setPassword}
+                    value={enteredPassword}
+                    placeholder="password" 
+                    placeholderTextColor = "gray"
+                    autoCapitalize = 'none'
+                    secureTextEntry  />
+                </KeyboardAvoidingView>
                 <TouchableOpacity onPress={enterLoginInfo} style={styles.button}>
                     <Text>Enter</Text>
                 </TouchableOpacity>
-            </KeyboardAvoidingView>
+            </View>
         </View>
     )
 }
@@ -68,7 +72,7 @@ const styles = StyleSheet.create({
         width: windowWidth,
         alignItems: 'center',
         justifyContent: 'space-evenly',
-        top: '5%',
+        top: '5%'
     },
     input: {
         backgroundColor: '#FFFFFF',

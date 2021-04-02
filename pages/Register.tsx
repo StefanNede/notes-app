@@ -46,12 +46,12 @@ export default function Register({loggedIn, setLoggedIn, profile, setProfile}:an
                             <Text style={styles.buttonText}>log in</Text>
                         </TouchableOpacity>
                     </View>
-                    <KeyboardAvoidingView style={styles.mainRegisterArea} behavior={Platform.OS === "ios" ? "padding" : "height"}>
+                    <View style={styles.mainRegisterArea}>
                         {currentPage === "sign up" ? <Signup signupInfo={signupInfo} setSignupInfo={setSignupInfo} loggedIn={loggedIn} setLoggedIn={setLoggedIn} setProfile={setProfile}/> : <Login loginInfo = {loginInfo} setLoginInfo = {setLoginInfo} loggedIn={loggedIn} setLoggedIn={setLoggedIn} setProfile={setProfile}/>}
                         <TouchableOpacity onPress={continueWithoutAccount}>
                             <Text style={styles.ContinueText}>Continue not logged in</Text>
                         </TouchableOpacity>
-                    </KeyboardAvoidingView>
+                    </View>
                 </View>
             </View>
         </View>

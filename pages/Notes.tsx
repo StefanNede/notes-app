@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Text, View, StyleSheet, TouchableOpacity, ScrollView, Image} from 'react-native';
 import {windowWidth, windowHeight} from "../globals/ScreenSize";
 import Note from "../components/Note";
-// import WriteNote from "../components/WriteNote";
+import WriteNote from "../components/WriteNote";
 import {bgColor1, lightTextColor} from "../globals/Colours";
 
 export default function Notes(){
@@ -14,27 +14,31 @@ export default function Notes(){
         title: "first note",
         description: "this is the first note",
         content: "Hello everyone, this is the first note that I have written. I hope that you all enjoy it a lot",
-        dateWritten: "2nd April",
+        dateWritten: "2 April 2021",
     }, {
         title: "second note",
         description: "this is the second note, isn't it nice?",
         content: "Hello everyone, this is the second note that I have written. I hope that you all enjoy it a lot",
-        dateWritten: "2nd April",
+        dateWritten: "2 April 2021",
     }]);
     return (
         <View>
-            <Image source={require("../assets/backgrounds/otherbg.png")} style={styles.backgroundImage}></Image>
-            <ScrollView>
-                {
-                    notes.map((note)=>{
-                        // making sure that the notes have a different key
-                        return <Note key={Math.random()*notes.length + 1000} note={note}/>
-                    })
-                }
-            </ScrollView> 
-            <TouchableOpacity style={styles.addNote} onPress={writeNote}>
-                <Text style={styles.add}>+</Text>
-            </TouchableOpacity>
+            <Image source={require("../assets/backgrounds/otherbg.png")} style={styles.backgroundImage} />
+            {writeView ? <WriteNote setWriteView={setWriteView} notes={notes} setNotes={setNotes}/> :
+            <View>
+                <ScrollView>
+                    {
+                        notes.map((note)=>{
+                            // making sure that the notes have a different key
+                            return <Note key={Math.random()*notes.length + 1000} note={note}/>
+                        })
+                    }
+                </ScrollView>
+                <TouchableOpacity style={styles.addNote} onPress={writeNote}>
+                    <Text style={styles.add}>+</Text>
+                </TouchableOpacity>
+            </View>
+            }
         </View>
     )
 }
