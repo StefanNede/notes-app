@@ -5,7 +5,7 @@ This is a practice notes app project, and the code should **not** be taken too s
 
 ## images
 > These are the images:
-#### sign-up and log-in:
+#### sign-up and log-in :computer: :keyboard: :
 <img width="244" alt="signup" src="https://user-images.githubusercontent.com/74429608/113492068-326ad200-94cd-11eb-9a2f-be256f728e3c.png"><img width="244" alt="login" src="https://user-images.githubusercontent.com/74429608/113492071-3696ef80-94cd-11eb-9c0e-c78a8261e30e.png">
 
 #### notes:
