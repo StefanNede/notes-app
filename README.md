@@ -6,8 +6,7 @@ This is a practice notes app project, and the code should **not** be taken too s
 ## images
 > These are the images:
 #### sign-up and log-in:
-<img width="488" alt="signup" src="https://user-images.githubusercontent.com/74429608/113492068-326ad200-94cd-11eb-9a2f-be256f728e3c.png">
-<img width="488" alt="login" src="https://user-images.githubusercontent.com/74429608/113492071-3696ef80-94cd-11eb-9c0e-c78a8261e30e.png">
+<img width="488" alt="signup" src="https://user-images.githubusercontent.com/74429608/113492068-326ad200-94cd-11eb-9a2f-be256f728e3c.png"><img width="488" alt="login" src="https://user-images.githubusercontent.com/74429608/113492071-3696ef80-94cd-11eb-9c0e-c78a8261e30e.png">
 
 #### notes:
 <img width="488" alt="empty" src="https://user-images.githubusercontent.com/74429608/113492090-55958180-94cd-11eb-817a-b0e3869da50d.png">
