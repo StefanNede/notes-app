@@ -8,8 +8,7 @@ This is a practice notes app project, and the code should **not** be taken too s
 #### sign-up and log-in :computer: :keyboard: :
 <img width="244" alt="signup" src="https://user-images.githubusercontent.com/74429608/113492068-326ad200-94cd-11eb-9a2f-be256f728e3c.png"><img width="244" alt="login" src="https://user-images.githubusercontent.com/74429608/113492071-3696ef80-94cd-11eb-9c0e-c78a8261e30e.png">
 
-#### notes :memo:
-:pencil: :
+#### notes :memo: :
 <img width="244" alt="empty" src="https://user-images.githubusercontent.com/74429608/113492090-55958180-94cd-11eb-817a-b0e3869da50d.png"><img width="244" alt="writingNote" src="https://user-images.githubusercontent.com/74429608/113492084-4ca4b000-94cd-11eb-8593-9908e2a797ac.png"><img width="244" alt="viewNotes" src="https://user-images.githubusercontent.com/74429608/113492085-4e6e7380-94cd-11eb-9858-174cd858cb6c.png"><img width="244" alt="readNote" src="https://user-images.githubusercontent.com/74429608/113492087-4f9fa080-94cd-11eb-8aaf-3b10531be344.png">
 
 #### home and profile pages:
