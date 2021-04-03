@@ -13,4 +13,5 @@ This is a practice notes app project, and the code should **not** be taken too s
 
 #### home and profile pages:
 *didn't work on these as they weren't related to the what I wanted to learn from the project*
+
 <img width="244" alt="home" src="https://user-images.githubusercontent.com/74429608/113492250-069c1c00-94ce-11eb-8087-aa9cb35e11f0.png"><img width="244" alt="stefanProfile" src="https://user-images.githubusercontent.com/74429608/113492175-ab6a2980-94cd-11eb-9d00-e3d0a7e5e27e.png"><img width="244" alt="guestProfile" src="https://user-images.githubusercontent.com/74429608/113492177-adcc8380-94cd-11eb-9581-6808b3d2b8fc.png">
