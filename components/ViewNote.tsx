@@ -4,9 +4,19 @@ import {windowWidth, windowHeight} from "../globals/ScreenSize";
 import {regularFontSize, titleFontSize, smallFontSize} from "../globals/FontSize";
 import {bgColor1, bgColor2, lightTextColor, notesBackgroundColor} from "../globals/Colours";
 
-export default function ViewNote({note, setNoteOpen}:any){
+export default function ViewNote({note, setNoteOpen, setNotes, notes}:any){
     function closeOpenView(){
         setNoteOpen(false);
+    }
+    function deleteNote(){
+        const allNotes = notes;
+        const afterNotes = [];
+        allNotes.forEach((allNote, index)=>{
+            if (allNote!== note){
+                afterNotes.push(allNote);
+            }
+        })
+        setNotes(afterNotes);
     }
     return(
         <View style={styles.viewNote}>
@@ -14,10 +24,13 @@ export default function ViewNote({note, setNoteOpen}:any){
                 <TouchableOpacity onPress={closeOpenView}>
                     <Text>Close</Text>
                 </TouchableOpacity>
-                <Text>{note.title}</Text>
-                <Text>{note.description}</Text>
-                <Text>{note.content}</Text>
-                <Text>{note.dateCreated}</Text>
+                <TouchableOpacity onPress={deleteNote} style={styles.delete}>
+                    <Text>Delete note</Text>
+                </TouchableOpacity>
+                <Text style={styles.text}>{note.title}</Text>
+                <Text style={styles.text}>{note.description}</Text>
+                <Text style={styles.text}>{note.content}</Text>
+                <Text style={styles.text}>{note.dateCreated}</Text>
             </ScrollView>
         </View>
     )
@@ -31,4 +44,11 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         marginTop: 10,
     },
+    text: {
+        alignSelf: 'center'
+    },
+    delete: {
+        alignSelf: 'flex-end',
+        position: 'absolute'
+    }
 });

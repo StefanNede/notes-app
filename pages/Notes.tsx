@@ -11,15 +11,10 @@ export default function Notes(){
         setWriteView(true);
     }
     const [notes, setNotes] = useState([{
-        title: "first note",
-        description: "this is the first note",
-        content: "Hello everyone, this is the first note that I have written. I hope that you all enjoy it a lot",
-        dateWritten: "2nd April 2021",
-    }, {
-        title: "second note",
-        description: "this is the second note, isn't it nice?",
-        content: "Hello everyone, this is the second note that I have written. I hope that you all enjoy it a lot",
-        dateWritten: "2nd April 2021",
+        title:"sample note",
+        description: "this is the description",
+        content: "this is the content",
+        dateWritten: "3rd March 2021"
     }]);
     return (
         <View>
@@ -30,7 +25,7 @@ export default function Notes(){
                     {
                         notes.map((note)=>{
                             // making sure that the notes have a different key
-                            return <Note key={Math.random()*notes.length + 1000} note={note}/>
+                            return <Note key={Math.random()*notes.length + 1000} note={note} setNotes={setNotes} notes={notes}/>
                         })
                     }
                 </ScrollView>
@@ -47,7 +42,7 @@ const styles = StyleSheet.create({
     backgroundImage: {
         flex: 1,
         position: 'absolute',
-        left: windowWidth*0.9 - windowWidth,
+        left: windowWidth*0.9 - windowWidth
     },
     addNote: {
         height: 50,
@@ -63,6 +58,7 @@ const styles = StyleSheet.create({
         elevation: 10,
         shadowOffset: { height: 0, width:0},
         shadowOpacity: 0.5,
+        position: 'absolute'
     },
     add :{
         fontSize: 30,

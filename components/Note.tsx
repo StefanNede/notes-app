@@ -5,14 +5,14 @@ import {regularFontSize, titleFontSize, smallFontSize} from "../globals/FontSize
 import {bgColor1, bgColor2, lightTextColor, notesBackgroundColor} from "../globals/Colours";
 import ViewNote from "./ViewNote";
 
-export default function Note({note}: any){
+export default function Note({note, setNotes, notes}: any){
     const [noteOpen, setNoteOpen] = useState(false);
     function openNote(){
         setNoteOpen(true);
     };
     return (
         <View>
-            {noteOpen ? <ViewNote note={note} setNoteOpen={setNoteOpen}/> : <TouchableOpacity style={styles.NoteContainer} onPress={openNote}>
+            {noteOpen ? <ViewNote note={note} setNoteOpen={setNoteOpen} setNotes={setNotes} notes={notes}/> : <TouchableOpacity style={styles.NoteContainer} onPress={openNote}>
                 <Text style={styles.noteTitle}>{note.title}</Text>
                 <Text style={styles.noteDescription}>{note.description}</Text>
                 <Text style={styles.noteDate}>{note.dateWritten}</Text>

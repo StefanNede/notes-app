@@ -1,12 +1,32 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, TouchableOpacity, Text, TextInput, StyleSheet, KeyboardAvoidingView, Platform, Alert} from "react-native";
 import { windowWidth, windowHeight } from '../globals/ScreenSize';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export default function Signup(props){
+export default function Signup(props:any){
     const [enteredUsername, setUsername] = useState("");
     const [enteredEmail, setEmail] = useState("");
     const [enteredPassword, setPassword] = useState("");
     const [person, setPerson] = useState({});
+
+    const storeLoggedIn = async () => {
+        try {
+          await AsyncStorage.setItem('has_logged_in', "true");
+        } catch (e) {
+            console.log("error whilst trying to save that the user has logged in");
+        }
+      }
+    const createNotes = async () => {
+        try {
+            await AsyncStorage.setItem('notes', "");
+          } catch (e) {
+              console.log("error whilst trying to save that the user has logged in");
+          }
+    }
+    useEffect(()=>{
+        storeLoggedIn();
+        createNotes();
+    }, [])
 
     function enterSignupInfo(){
         if (enteredEmail.includes('@')){

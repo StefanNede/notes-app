@@ -12,14 +12,36 @@ export default function Signup({loginInfo, setLoginInfo, loggedIn, setLoggedIn, 
     };
     // stores the fact that the user has logged in on this app, so that the user doesn't need to log in each time they open the app
     // we will disable this whilst testing, as it interferes with the virtual device
-    // const storeData = async () => {
-    //     try {
-    //       await AsyncStorage.setItem('has_logged_in', true);
-    //     } catch (e) {
-    //         console.log("error whilst trying to save that the user has logged in");
-    //     }
-    //     console.log('done');
-    //   }
+    const storeLoggedIn = async () => {
+        try {
+          await AsyncStorage.setItem('has_logged_in', "true");
+        } catch (e) {
+            console.log("error whilst trying to save that the user has logged in");
+        }
+      }
+
+    const createNotes = async () => {
+        const notesBoilerplate = {
+            "notes": [{
+                "title": "first note",
+                "description": "first description",
+                "content": "first content",
+                "date": "3rd March 2021"
+            }]
+        }
+        const myjson = JSON.stringify(notesBoilerplate);
+
+        try {
+            await AsyncStorage.setItem('notes', myjson);
+          } catch (e) {
+              console.log("error whilst trying to save that the user has logged in");
+          }
+    }
+    useEffect(()=>{
+        storeLoggedIn();
+        createNotes();
+    }, [])
+
     function enterLoginInfo(){
         if (enteredUsername === correctInfo.username.toLowerCase() && enteredPassword === correctInfo.password){
             setLoggedIn(true);
