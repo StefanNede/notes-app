@@ -11,11 +11,25 @@ export default function WriteNote({setWriteView, notes, setNotes}: any) {
     const getDateWritten = () =>{
         const date:object|any = new Date();
         const day:number = date.getDate();
+        function getDayEnding(day:number):string{
+            let ending = "th";
+            if (day=== 1 || day=== 21 || day=== 31 ){
+                ending = "st";
+            }
+            else if (day=== 2 || day=== 22){
+                ending = "nd";
+            }
+            else if (day=== 3 || day=== 23){
+                ending = "rd";
+            }
+            return ending;
+        }
+        const dayEnding:string = getDayEnding(day);
         const monthNumber:number = date.getMonth(); // the month starts at 0
         const month_number_to_word:Array<string> = ['January', 'February', 'March', 'April', 'May','June','July','August','September','October','November','December'];
         const month:string = month_number_to_word[monthNumber];
         const year:number = date.getFullYear();
-        return `${day} ${month} ${year}`; 
+        return `${day}${dayEnding} ${month} ${year}`; 
     }
     const saveNote = () =>{
         const dateWritten = getDateWritten();

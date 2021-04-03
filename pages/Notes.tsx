@@ -14,12 +14,12 @@ export default function Notes(){
         title: "first note",
         description: "this is the first note",
         content: "Hello everyone, this is the first note that I have written. I hope that you all enjoy it a lot",
-        dateWritten: "2 April 2021",
+        dateWritten: "2nd April 2021",
     }, {
         title: "second note",
         description: "this is the second note, isn't it nice?",
         content: "Hello everyone, this is the second note that I have written. I hope that you all enjoy it a lot",
-        dateWritten: "2 April 2021",
+        dateWritten: "2nd April 2021",
     }]);
     return (
         <View>
